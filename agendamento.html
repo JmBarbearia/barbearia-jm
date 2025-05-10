@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Agendamento - Barbearia JM</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+  <header>
+    <div class="logo">
+  <img src="logo.png" alt="Logo Barbearia JM" />
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="precos.html">Preços</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="agendamento">
+      <h2>Agendamento</h2>
+      <form id="form-agendamento">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" required />
+
+        <label>Serviços:</label>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="servico" value="corte" data-tempo="35" /> Corte (35 min)</label>
+            <label><input type="checkbox" name="servico" value="pezinho" data-tempo="10" /> Pezinho (10 min)</label>
+            <label><input type="checkbox" name="servico" value="barba" data-tempo="20" /> Barba (20 min)</label>
+            <label><input type="checkbox" name="servico" value="sobrancelha" data-tempo="10" /> Sobrancelha (10 min)</label>
+            <label><input type="checkbox" name="servico" value="alisamento" data-tempo="45" /> Alisamento (45 min)</label>
+            <label><input type="checkbox" name="servico" value="luzes" data-tempo="60" /> Luzes (60 min)</label>
+            <label><input type="checkbox" name="servico" value="platinado" data-tempo="90" /> Platinado (90 min)</label>
+            <label><input type="checkbox" name="servico" value="pigmentacao" data-tempo="40" /> Pigmentação (40 min)</label>
+        </div>
+
+
+        <label for="data">Data:</label>
+        <input type="date" id="data" required min="" />
+
+        <div id="mensagem-fechado" class="mensagem-fechado">
+          Estamos fechado aos domingos e segundas. Por favor, escolha outro dia!
+        </div>
+
+        <label for="hora">Horário:</label>
+        <select id="hora" required>
+          <option value="">Selecione os serviços primeiro</option>
+        </select>
+
+        <button type="submit">Confirmar Horário</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Barbearia JM. Todos os direitos reservados.</p>
+  </footer>
+
+<a href="https://wa.me/553193686493" target="_blank" class="whatsapp-float" aria-label="Fale conosco no WhatsApp">
+  <img src="https://img.icons8.com/color/48/000000/whatsapp.png" alt="WhatsApp" />
+</a>
+
+
+  
+  <script src="script.js"></script>
+</body>
+</html>
