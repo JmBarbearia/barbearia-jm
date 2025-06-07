@@ -10,9 +10,8 @@
 <body>
   <header>
     <div class="logo">
-  <img src="logo.png" alt="Logo Barbearia JM" />
+      <img src="logo.png" alt="Logo Barbearia JM" />
     </div>
-
     <nav>
       <ul>
         <li><a href="index.html">Início</a></li>
@@ -24,34 +23,34 @@
   <main>
     <section class="agendamento">
       <h2>Agendamento</h2>
-      <form id="form-agendamento">
+      
+      <form id="form-agendamento" action="https://formsubmit.co/contato.jmbarber@gmail.com" method="POST">
         <label for="nome">Nome:</label>
-        <input type="text" id="nome" required />
+        <input type="text" id="nome" name="nome" required />
 
         <label>Serviços:</label>
         <div class="checkbox-group">
-            <label><input type="checkbox" name="servico" value="corte" data-tempo="35" /> Corte (35 min)</label>
-            <label><input type="checkbox" name="servico" value="pezinho" data-tempo="10" /> Pezinho (10 min)</label>
-            <label><input type="checkbox" name="servico" value="barba" data-tempo="20" /> Barba (20 min)</label>
-            <label><input type="checkbox" name="servico" value="sobrancelha" data-tempo="10" /> Sobrancelha (10 min)</label>
-            <label><input type="checkbox" name="servico" value="alisamento" data-tempo="45" /> Alisamento (45 min)</label>
-            <label><input type="checkbox" name="servico" value="luzes" data-tempo="60" /> Luzes (60 min)</label>
-            <label><input type="checkbox" name="servico" value="platinado" data-tempo="90" /> Platinado (90 min)</label>
-            <label><input type="checkbox" name="servico" value="pigmentacao" data-tempo="40" /> Pigmentação (40 min)</label>
+          <label><input type="checkbox" name="servicos" value="corte" /> Corte (35 min)</label>
+          <label><input type="checkbox" name="servicos" value="pezinho" /> Pezinho (10 min)</label>
+          <label><input type="checkbox" name="servicos" value="barba" /> Barba (20 min)</label>
+          <label><input type="checkbox" name="servicos" value="sobrancelha" /> Sobrancelha (10 min)</label>
+          <label><input type="checkbox" name="servicos" value="alisamento" /> Alisamento (45 min)</label>
+          <label><input type="checkbox" name="servicos" value="luzes" /> Luzes (60 min)</label>
+          <label><input type="checkbox" name="servicos" value="platinado" /> Platinado (90 min)</label>
+          <label><input type="checkbox" name="servicos" value="pigmentacao" /> Pigmentação (40 min)</label>
         </div>
-
 
         <label for="data">Data:</label>
-        <input type="date" id="data" required min="" />
-
-        <div id="mensagem-fechado" class="mensagem-fechado">
-          Estamos fechado aos domingos e segundas. Por favor, escolha outro dia!
-        </div>
+        <input type="date" id="data" name="data" required />
 
         <label for="hora">Horário:</label>
-        <select id="hora" required>
+        <select id="hora" name="hora" required disabled>
           <option value="">Selecione os serviços primeiro</option>
         </select>
+
+        <input type="hidden" name="_subject" value="Novo agendamento recebido!">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://jmbarber.github.io/sucesso.html">
 
         <button type="submit">Confirmar Horário</button>
       </form>
@@ -62,12 +61,37 @@
     <p>&copy; 2025 Barbearia JM. Todos os direitos reservados.</p>
   </footer>
 
-<a href="https://wa.me/553193686493" target="_blank" class="whatsapp-float" aria-label="Fale conosco no WhatsApp">
-  <img src="https://img.icons8.com/color/48/000000/whatsapp.png" alt="WhatsApp" />
-</a>
+  <a href="https://wa.me/553193686493" target="_blank" class="whatsapp-float" aria-label="Fale conosco no WhatsApp">
+    <img src="https://img.icons8.com/color/48/000000/whatsapp.png" alt="WhatsApp" />
+  </a>
 
+  <script>
+    // Script para habilitar o campo horário quando selecionar pelo menos um serviço
+    const servicosCheckboxes = document.querySelectorAll('input[name="servicos"]');
+    const horarioSelect = document.getElementById('hora');
 
-  
-  <script src="script.js"></script>
+    function atualizarHorario() {
+      const algumSelecionado = Array.from(servicosCheckboxes).some(chk => chk.checked);
+      horarioSelect.disabled = !algumSelecionado;
+
+      if (!algumSelecionado) {
+        horarioSelect.innerHTML = '<option value="">Selecione os serviços primeiro</option>';
+      } else {
+        // Exemplo simples de horários disponíveis (pode ajustar depois)
+        horarioSelect.innerHTML = `
+          <option value="">Selecione um horário</option>
+          <option value="09:00">09:00</option>
+          <option value="10:00">10:00</option>
+          <option value="11:00">11:00</option>
+          <option value="13:00">13:00</option>
+          <option value="14:00">14:00</option>
+          <option value="15:00">15:00</option>
+          <option value="16:00">16:00</option>
+        `;
+      }
+    }
+
+    servicosCheckboxes.forEach(chk => chk.addEventListener('change', atualizarHorario));
+  </script>
 </body>
 </html>
